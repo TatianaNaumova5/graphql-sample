@@ -1,0 +1,16 @@
+{
+  "repository": {
+    "url": "git+https://github.com/TatianaNaumova5/graphql-sample.git"
+  },
+  "author": "Tatiana Valverde",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "express-graphql": "^0.12.0",
+    "graphql": "^16.7.1",
+    "notarealdb": "^0.2.2"
+  },
+  "scripts": {
+    "start": "node server.js"
+  }
+}

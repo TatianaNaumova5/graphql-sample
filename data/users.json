@@ -1,0 +1,25 @@
+[
+  {
+    "id": "USER001",
+    "firstName":"Marilyn",
+    "lastName":"Monroe",
+    "copmany": "Beauty Star",
+    "email": "marilynmonroe@kompot.com"
+  },
+
+  {
+    "id": "USER002",
+    "firstName":"Brad",
+    "lastName":"Pitt",
+    "company": "The Best Property",
+    "email": "bradpitt@kompot.com"
+  },
+
+  {
+    "id": "USER003",
+    "firstName":"Johnny",
+    "lastName":"Depp",
+    "company": "Pawnbrocker",
+    "email": "johnnydepp@kompot.com"
+  }
+]

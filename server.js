@@ -7,7 +7,7 @@ const db = require('./db')
 const port = 8080;
 
 const schema = buildSchema(`
-type Qery {
+type Query {
   hello:String
   users:[User]
 }
@@ -32,7 +32,7 @@ lastName:String
 //resolver
 const root = {
     hello: ()=> "Hello World!",
-    user: ()=> db.users.list()
+    users: ()=> db.user.list()
 }
 
 const app = express();

@@ -4,8 +4,8 @@ const {buildSchema}= require('graphql');
 const cors = require('cors');
 const db = require('./db')
 const port = 8080;
-
-// const schema = buildSchema(`
+const schema = require('./schema')
+//const schema = buildSchema(`
 //
 // type Query {
 //   hello:String
@@ -28,7 +28,7 @@ const port = 8080;
 // firstName:String
 // lastName:String
 // }
-//  `);
+// `);
 
 //resolver
 const root = {

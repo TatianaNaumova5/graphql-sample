@@ -1,5 +1,6 @@
 const { buildSchema } = require('graphql');
- const schema = buildSchema(`
+
+const schema = buildSchema(`
 type Query {
   hello:String
   users:[User]
@@ -23,4 +24,4 @@ lastName:String
 }
 `);
 
- module.schema = schema
+ module.exports = schema

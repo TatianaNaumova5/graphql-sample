@@ -1,49 +1,30 @@
-const express = require('express');
-const {graphqlHTTP} = require('express-graphql');
-const {buildSchema}= require('graphql');
-const cors = require('cors');
-const db = require('./db')
-const port = 8080;
+const mongoose = require('mongoose');
+const cors = require('cors')
+const { graphqlHTTP } = require('express-graphql');
+const bodyParser = require('body-parser');
 const schema = require('./schema')
-//const schema = buildSchema(`
-//
-// type Query {
-//   hello:String
-//   users:[User]
-// }
-//
-// type User {
-//   id: ID!
-//   firstName:String
-//   lastName:String
-//   email: String
-// }
-//
-// type Mutation {
-// createUser(input:UserInput): User
-// updateUser(id:ID!, input:UserInput): User
-// }
-//
-// input UserInput{
-// firstName:String
-// lastName:String
-// }
-// `);
+const resolver = require('./resolvers')
 
-//resolver
-const root = {
-    hello: ()=> "Hello World!",
-    users: ()=> db.users.list()
-}
+//connection URL for mongoDB
+//const mongoDB = 'mongodb://localhost:27017/'
+const mongoDB = 'mongodb://127.0.0.1:27017/graphqlSample'
+mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true})
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB failed to connect'))
+db.on('connected', console.log.bind(console, 'MongoDB connected to the server'))
 
-const app = express();
+const express = require('express');
+const app = express()
+const port = 8080;
+
 app.use(cors())
+app.use(express.json())
+app.use(bodyParser.json());
 app.use('/graphql', graphqlHTTP({
-    schema: schema,
-    rootValue: root,
-    graphiql: true
+    schema:schema,
+    rootValue:resolver,
+    graphiql:true
 }))
-app.listen(port, ()=> {
-
+app.listen(port, () => {
     console.log(`Server Listening on ${port}`)
-})
+}   )
